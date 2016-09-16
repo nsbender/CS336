@@ -1,3 +1,9 @@
+/*
+  Nate Bender
+  CS336
+  9/15/2016
+*/
+
 "use strict";
 
 //defines the class Person, and its members
