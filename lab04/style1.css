@@ -1,0 +1,17 @@
+/* style for entire body */
+body { font: 16px "Comic Sans MS", cursive; background: url("Blue-rule.png");}
+
+/* style for initial letterd in second paragraph */
+strong { color: #f00; background-color: #ddf; font: 200% serif;}
+
+/* style for initial letter C in first paragraph */
+/*.carrot { color: orange; }*/
+/* style for initial letter s in first paragraph */
+.spinach { color: #080; background-color: #ddf; }
+
+/* style for text in first paragraph */
+#first { font-style: italic; }
+p { color: #00f; }
+
+p:before{ content: url("Yellow-pin.png"); }
+/*red, blue, purple, grey, chartreuse are also some examples of working colors*/
