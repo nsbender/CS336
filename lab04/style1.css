@@ -14,4 +14,3 @@ strong { color: #f00; background-color: #ddf; font: 200% serif;}
 p { color: #00f; }
 
 p:before{ content: url("Yellow-pin.png"); }
-/*red, blue, purple, grey, chartreuse are also some examples of working colors*/
