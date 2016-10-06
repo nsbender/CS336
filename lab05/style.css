@@ -1,15 +1,16 @@
-body
+body {
   font: 24px Helvetica;
   background: #999;
-
-#main
+}
+#main {
   min-height: 800px;
   margin: 0px;
   padding: 0px;
   display: flex;
   flex-flow: row;
-
- article
+}
+#main > article {
+/*margin: 4px;*/
   padding-top: 20px;
   padding-left: 8px;
   padding-right: 8px;
@@ -17,8 +18,8 @@ body
   background: #dd8;
   flex: 3 1 60%;
   order: 2;
-
-nav
+}
+#main > nav {
   padding-top: 20px;
   padding-left: 8px;
   padding-right: 8px;
@@ -27,8 +28,8 @@ nav
   flex: 1 6 20%;
   order: 1;
   text-align: right;
-
-aside
+}
+#main > aside {
   padding-top: 20px;
   padding-left: 8px;
   padding-right: 8px;
@@ -36,8 +37,8 @@ aside
   background: #ccf;
   flex: 1 6 20%;
   order: 3;
-
-header
+}
+header {
   display: block;
   padding: 5px;
   min-height: 100px;
@@ -45,8 +46,8 @@ header
   background: #feb;
   line-height: 100px;
   font-size: 48px;
-
-footer
+}
+footer {
   display: block;
   padding: 10px;
   min-height: 100px;
@@ -54,29 +55,37 @@ footer
   background: #feb;
   line-height: 100px;
   font-size: 18px;
-
+}
 /* Too narrow to support three columns */
-@media all and (max-width: 640px)
-  #main, #page
+@media all and (max-width: 640px) {
+  #main,
+  #page {
     flex-direction: column;
-
-   article, nav, aside 
+  }
+  #main > article,
+  #main > nav,
+  #main > aside {
 /* Return them to document order */
     order: 0;
-
-  nav, aside, header, footer
+  }
+  #main > nav,
+  #main > aside,
+  header,
+  footer {
     min-height: 50px;
     max-height: 50px;
     text-align: left;
-
-  header
+  }
+  header {
     line-height: 50px;
     font-size: 32px;
-
-  footer
+  }
+  footer {
     line-height: 50px;
-
-  nav
+  }
+  #main > nav {
     padding-top: 5px;
     order: -1;
     font-size: 20px;
+  }
+}
