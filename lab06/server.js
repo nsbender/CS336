@@ -12,12 +12,10 @@ app.use(express.static('public'));
 // This responds to GET requests for a hello message.
 app.get('/request', function(req, res) {
   res.status(http_status.ACCEPTED);
-
   res.send("Hello, Express route!");
 });
 // Respond to HEAD requests
 app.head('/request', function(req, res) {
-  res.status(http_status.ACCEPTED);
   res.send();
 });
 // This responds to POST requests

@@ -1,0 +1,36 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>Demo</title>
+  <style>
+  a.test {
+    font-weight: bold;
+  }
+  p.modifiedp {
+    font-style: italic;
+  }
+  </style>
+</head>
+<body>
+  <a href="http://jquery.com/">jQuery</a>
+  <p>Lab07 Exercise 7.2 and 7.3</p>
+  <script src="jquery.js"></script>
+  <script>
+  $( document ).ready(function() {
+    $( "a" ).click(function( event ) {
+        event.preventDefault();
+        $( this ).hide( "slow" );
+    });
+    $("body").append( " <p>A whole new paragraph created with JQuery</p> ");
+    $( "p" ).click(function( event ) {
+      $( "p" ).removeClass( "modifiedp" );
+    });
+    $( "a" ).addClass( "test" );
+    $( "p" ).addClass( "modifiedp" );
+  });
+
+  </script>
+
+</body>
+</html>
