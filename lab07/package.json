@@ -4,8 +4,7 @@
   "description": "",
   "main": "server.js",
   "scripts": {
-    "start": "kill $(pgrep node) ; nodemon --ignore public/ server.js &",
-    "stop": "kill $(pgrep node)"
+    "start": "node server.js",
   },
   "author": "kvlinden",
   "license": "ISC",
