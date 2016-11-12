@@ -16,16 +16,11 @@ var express = require('express');
 var bodyParser = require('body-parser');
 var app = express();
 var MongoClient = require('mongodb').MongoClient;
-var db = 'mongodb://cs336:bjarne@ds017185.mlab.com:17185/cs336';
+var db;
 
-MongoClient.connect(db, function (err, db) {
+MongoClient.connect('mongodb://cs336:bjarne@ds017185.mlab.com:17185/cs336', function (err, dbConnection) {
   if (err) throw err;
-
-  db.collection('comments').find().toArray(function (err, result) {
-    if (err) throw err;
-
-    console.log(result);
-  });
+  db = dbConnection;
 });
 
 var COMMENTS_FILE = path.join(__dirname, 'comments.json');
@@ -48,13 +43,10 @@ app.use(function(req, res, next) {
 });
 
 app.get('/api/comments', function(req, res) {
-    fs.readFile(COMMENTS_FILE, function(err, data) {
-        if (err) {
-            console.error(err);
-            process.exit(1);
-        }
-        res.json(JSON.parse(data));
-    });
+  db.collection("comments").find({}).toArray(function(err, docs) {
+      if (err) throw err;
+      res.json(docs);
+  });
 });
 
 app.post('/api/comments', function(req, res) {
