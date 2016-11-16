@@ -20,7 +20,6 @@ var db = 'mongodb://cs336:bjarne@ds017185.mlab.com:17185/cs336';
 
 MongoClient.connect(db, function (err, db) {
   if (err) throw err;
-
 });
 
 var COMMENTS_FILE = path.join(__dirname, 'comments.json');
