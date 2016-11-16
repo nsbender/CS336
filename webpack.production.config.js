@@ -17,17 +17,17 @@ module.exports = {
     ]
   },
   postcss: [
-        require('autoprefixer')
+    require('autoprefixer')
   ],
   plugins: [
     new webpack.DefinePlugin({
-                'process.env':{
-                    'NODE_ENV': JSON.stringify('production')
-                }
-            }),
-            new HtmlWebpackPlugin({template: __dirname + "/app/index.tmpl.html"}),
-            new webpack.HotModuleReplacementPlugin()
-            new webpack.optimize.OccurenceOrderPlugin(),
-            new webpack.optimize.UglifyJsPlugin(),
-            new ExtractTextPlugin("[name]-[hash].css")  ],
+      'process.env':{
+        'NODE_ENV': JSON.stringify('production')
+      }
+    }),
+    new HtmlWebpackPlugin({template: __dirname + "/app/index.tmpl.html"}),
+    new webpack.optimize.OccurenceOrderPlugin(),
+    new webpack.optimize.UglifyJsPlugin(),
+    new ExtractTextPlugin("[name]-[hash].css")
+  ]
 };
