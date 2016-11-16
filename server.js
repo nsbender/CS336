@@ -16,7 +16,7 @@ var express = require('express');
 var bodyParser = require('body-parser');
 var app = express();
 var MongoClient = require('mongodb').MongoClient;
-var db = 'mongodb://cs336:bjarne@ds017185.mlab.com:17185/cs336';
+var db = 'mongodb://cs336:PASSWORD@ds017185.mlab.com:17185/cs336';
 
 MongoClient.connect(db, function (err, db) {
   if (err) throw err;
