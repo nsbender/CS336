@@ -1,0 +1,46 @@
+<!--  Homework02
+Nate Bender
+Due: 10/28/16
+-->
+<html>
+    <head>
+        <title>Search</title>
+        <link rel="stylesheet" href="style.css" />
+        <script src="//code.jquery.com/jquery-latest.js"></script>
+        <script src="//code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+        <script src="jquery.js"></script>
+
+    </head>
+    <body>
+      <h2>Search for person by ID:</h2>
+      <form action="/searchPerson" method="post">
+          <div>
+              <label for="personID">ID: </label>
+              <input type="text" id="personID" name="searchID" />
+          </div>
+          <div class="button">
+              <button type="submit">Search</button>
+          </div>
+      </form>
+      <script>
+      $(document).ready(function() {
+        $( 'form' ).submit(function( event ) {
+          $( "p" ).remove();
+          event.preventDefault();
+            $.ajax({
+                url: "/searchPerson",
+                type: "post",
+                data: { name:  $( "#personID" ).val()}
+            })
+            .done(function( result ) {
+               $("body").append("<p> " + result.content + "</p>");
+            })
+            .fail(function(xhr, status, errorThrown) {
+                console.log('AJAX request failed...');
+                $("body").append("<p> no data yet... </p>");
+             })
+          });
+        });
+      </script>
+    </body>
+</html>
