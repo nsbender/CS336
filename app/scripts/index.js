@@ -1,9 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import Remarkable from 'remarkable';
-import $ from 'jquery';
 
-import CommentBox from './CommentBox.js';
+import CommentBox from './CommentBox';
 
 import '../css/base.css';
 

@@ -6,6 +6,7 @@
   "description": "Code from the React tutorial.",
   "main": "server.js",
   "dependencies": {
+    "assert": "^1.4.1",
     "autoprefixer": "^6.5.3",
     "babel-core": "^6.18.0",
     "babel-loader": "^6.2.7",
@@ -34,23 +35,5 @@
     "dev": "node server.js & webpack-dev-server --progress",
     "install": "webpack --progress --config ./webpack.production.config.js",
     "start": "node server.js"
-  },
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/reactjs/react-tutorial.git"
-  },
-  "keywords": [
-    "react",
-    "tutorial",
-    "comment",
-    "example"
-  ],
-  "author": "petehunt",
-  "bugs": {
-    "url": "https://github.com/reactjs/react-tutorial/issues"
-  },
-  "homepage": "https://github.com/reactjs/react-tutorial",
-  "engines": {
-    "node": "0.12.x"
   }
 }

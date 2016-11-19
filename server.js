@@ -10,19 +10,14 @@
  * WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
  */
 
-var fs = require('fs');
 var path = require('path');
 var express = require('express');
 var bodyParser = require('body-parser');
 var app = express();
 var MongoClient = require('mongodb').MongoClient;
-var db = 'mongodb://cs336:PASSWORD@ds017185.mlab.com:17185/cs336';
 
-MongoClient.connect(db, function (err, db) {
-  if (err) throw err;
-});
+var db;
 
-var COMMENTS_FILE = path.join(__dirname, 'comments.json');
 
 app.set('port', (process.env.PORT || 3000));
 
@@ -42,13 +37,10 @@ app.use(function(req, res, next) {
 });
 
 app.get('/api/comments', function(req, res) {
-    fs.readFile(COMMENTS_FILE, function(err, data) {
-        if (err) {
-            console.error(err);
-            process.exit(1);
-        }
-        res.json(JSON.parse(data));
-    });
+  db.collection("comments").find({}).toArray(function(err, docs) {
+      if (err) throw err;
+      res.json(docs);
+  });
 });
 
 app.post('/api/comments', function(req, res) {
@@ -67,7 +59,11 @@ app.post('/api/comments', function(req, res) {
   });
 });
 
-
 app.listen(app.get('port'), function() {
     console.log('Server started: http://localhost:' + app.get('port') + '/');
+});
+
+MongoClient.connect('mongodb://cs336:bjarne@ds017185.mlab.com:17185/cs336', function (err, dbConnection) {
+  if (err) throw err;
+  db = dbConnection;
 });
