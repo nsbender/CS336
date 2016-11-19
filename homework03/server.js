@@ -5,8 +5,6 @@
  *  CS336, Fall 2016
 */
 
-"use strict"
-
 var path = require('path');
 var express = require('express');
 var bodyParser = require('body-parser');
@@ -14,7 +12,6 @@ var app = express();
 var MongoClient = require('mongodb').MongoClient;
 
 var db;
-
 
 app.set('port', (process.env.PORT || 3000));
 
@@ -29,15 +26,11 @@ app.get('/api/people', function(req, res) {
   });
 });
 
-app.listen(3000, function () {
-  console.log('People database app listening on port 3001!');
-});
-
 app.post('/api/people', function(req, res) {
   var newPerson = {
-    first: req.body.firstName,
-    last: req.body.lastName,
-    start: req.body.startDate
+    first: req.body.first,
+    last: req.body.last,
+    start: req.body.start
   };
   db.collection("people").insertOne(newPerson, function(err, result) {
     if (err) throw err;

@@ -22,7 +22,7 @@ module.exports = React.createClass({
         if (!first || !last || !start) {
             return;
         }
-        this.props.onCommentSubmit({first: author, last: last, start: start});
+        this.props.onPersonSubmit({first: first, last: last, start: start});
         this.setState({first: '', last: '', start: ''});
     },
     render: function() {

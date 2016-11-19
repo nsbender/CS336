@@ -21,9 +21,8 @@ module.exports = React.createClass({
              console.error(this.props.url, status, errorThrown.toString());
          }.bind(this));
     },
-    handleCommentSubmit: function(person) {
+    handlePersonSubmit: function(person) {
         var people = this.state.data;
-        person.id = Date.now();
         var newPeople = people.concat([person]);
         this.setState({data: newPeople});
         $.ajax({
@@ -50,7 +49,7 @@ module.exports = React.createClass({
             <div className="PersonBox">
                 <h1>People</h1>
                 <PersonList data={this.state.data} />
-                <PersonForm onCommentSubmit={this.handlePersonSubmit} />
+                <PersonForm onPersonSubmit={this.handlePersonSubmit} />
             </div>
         );
     }

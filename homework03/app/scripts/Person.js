@@ -10,8 +10,8 @@ module.exports = React.createClass({
     render: function() {
         return (
             <div className="Person">
-                <h2 className="personInfo" >
-                    {this.props.firstName + " ", this.props.lastName + " ", this.props.startDate}
+                <h2 className="PersonInfo" >
+                    {this.props.firstName + " " + this.props.lastName + " ", this.props.startDate}
                 </h2>
                 <span dangerouslySetInnerHTML={this.rawMarkup()} />
             </div>

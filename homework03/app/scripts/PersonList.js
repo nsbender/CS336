@@ -9,8 +9,8 @@ module.exports = React.createClass({
     render: function() {
         var personNodes = this.props.data.map(function(person) {
             return (
-                <Person first={person.firstName} last={person.lastName} start={person.startDate} key={person.id}>
-                    {person.firstName, person.lastName, person.startDate}
+                <Person first={person.first} last={person.last} start={person.start}>
+                    {person.first}{person.last}{person.start}
                 </Person>
             );
         });
