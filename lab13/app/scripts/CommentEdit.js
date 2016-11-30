@@ -8,20 +8,6 @@ module.exports = React.createClass({
   getInitialState: function() {
     return {author: '', text: ''};
   },
-  componentDidMount: function() {
-    let commentToEdit = StoreTools.findComment(this.props.params.id, store.getState().data);
-    this.setState({author: commentToEdit.author, text: commentToEdit.text});
-  },
-  componentDidUpdate: function(prevProps) {
-    if (this.props.params.id != prevProps.params.id) {
-      this.loadData();
-    }
-  },
-  loadData: function() {
-    $.ajax(API_URL + "/" + this.props.params.id) .done(function(comments) {
-      this.setState(comments[0]);
-    }.bind(this));
-  },
   handleAuthorChange: function(e) {
     this.setState({author: e.target.value});
   },
