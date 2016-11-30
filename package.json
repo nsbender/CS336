@@ -6,6 +6,7 @@
   "description": "Code from the React tutorial.",
   "main": "server.js",
   "dependencies": {
+    "assert": "^1.4.1",
     "autoprefixer": "^6.5.3",
     "babel-core": "^6.18.0",
     "babel-loader": "^6.2.7",
@@ -28,11 +29,13 @@
     "webpack": "^1.13.3"
   },
   "devDependencies": {
+    "nodemon": "^1.11.0",
     "webpack-dev-server": "^1.16.2"
   },
   "scripts": {
     "build": "webpack --progress",
-    "dev": "node server.js & webpack-dev-server --progress",
+    "dev": "kill $(pgrep node) ; nodemon --ignore app/ server.js & webpack-dev-server --progress --history-api-fallback&",
+    "stop": "kill $(pgrep node)",
     "install": "webpack --progress --config ./webpack.production.config.js",
     "start": "node server.js"
   },

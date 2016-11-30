@@ -23,7 +23,7 @@ module.exports = React.createClass({
     },
     render: function() {
         return (
-            <form className="commentForm" onSubmit={this.handleSubmit}>
+            <form className="CommentForm" onSubmit={this.handleSubmit}>
                 <input className="ui-widget ui-corner-all" type="text" placeholder="name..."
                     value={this.state.author} onChange={this.handleAuthorChange}
                 />

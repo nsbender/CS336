@@ -3,8 +3,7 @@ import $ from 'jquery';
 
 import CommentList from './CommentList';
 import CommentForm from './CommentForm';
-import API_URL from './global.js';
-import POLL_INTERVAL from './global.js';
+import { API_URL, POLL_INTERVAL } from './global';
 
 module.exports = React.createClass({
     getInitialState: function() {
@@ -12,7 +11,7 @@ module.exports = React.createClass({
     },
     loadCommentsFromServer: function() {
         $.ajax({
-            url: this.props.url,
+            url: API_URL,
             dataType: 'json',
             cache: false,
         })
@@ -29,7 +28,7 @@ module.exports = React.createClass({
         var newComments = comments.concat([comment]);
         this.setState({data: newComments});
         $.ajax({
-            url: this.props.url,
+            url: API_URL,
             dataType: 'json',
             type: 'POST',
             data: comment,
@@ -39,17 +38,16 @@ module.exports = React.createClass({
          }.bind(this))
          .fail(function(xhr, status, errorThrown) {
              this.setState({data: comments});
-             console.error(this.props.url, status, errorThrown.toString());
+             console.error(API_URL, status, errorThrown.toString());
          }.bind(this));
     },
     componentDidMount: function() {
         this.loadCommentsFromServer();
-	console.log(this.props.pollInterval);
-        setInterval(this.loadCommentsFromServer, this.props.pollInterval);
+        setInterval(this.loadCommentsFromServer, POLL_INTERVAL);
     },
     render: function() {
         return (
-            <div className="commentBox">
+            <div className="CommentBox">
                 <h1>Comments</h1>
                 <CommentList data={this.state.data} />
                 <CommentForm onCommentSubmit={this.handleCommentSubmit} />
