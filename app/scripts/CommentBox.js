@@ -11,24 +11,11 @@ module.exports = React.createClass({
         return {data: []};
     },
     handleCommentSubmit: function(comment) {
-        var comments = this.state.data;
-        comment.id = Date.now();
-        var newComments = comments.concat([comment]);
-        this.setState({data: newComments});
-    		store.dispatch(ActionTools.addComment(comment));
-        $.ajax({
-            url: API_URL,
-            dataType: 'json',
-            type: 'POST',
-            data: comment,
-        })
-         .done(function(result){
-             this.setState({data: result});
-         }.bind(this))
-         .fail(function(xhr, status, errorThrown) {
-             this.setState({data: comments});
-             console.error(API_URL, status, errorThrown.toString());
-         }.bind(this));
+      var comments = this.state.data;
+       comment.id = Date.now();
+       var newComments = comments.concat([comment]);
+       this.setState({data: newComments});
+       store.dispatch(ActionTools.addComment(comment));
     },
 		componentWillMount() {
     	this.unsubscribe = store.subscribe(() => {
